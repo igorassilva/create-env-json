@@ -14,7 +14,7 @@ Object.keys(process.env).forEach(function(key) {
   }
 });
   
-const fileContent = JSON.stringify(obj).replace('"{', '{').replace('}"', '');
+const fileContent = JSON.stringify(obj).replace('"{', '{').replace('}"', '}');
 
 fs.writeFile(fullPath, fileContent, function (error) {
   if (error) {

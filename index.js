@@ -10,11 +10,11 @@ var obj = {};
 
 Object.keys(process.env).forEach(function(key) {
   if(key.startsWith(inputPrefix) && key != "INPUT_FILE-NAME") {
-    obj[key.substring(inputPrefix.length)] = process.env[key].replace('"{', '{').replace('}"', '');
+    obj[key.substring(inputPrefix.length)] = process.env[key];
   }
 });
   
-const fileContent = JSON.stringify(obj);
+const fileContent = JSON.stringify(obj).replace('"{', '{').replace('}"', '');
 
 fs.writeFile(fullPath, fileContent, function (error) {
   if (error) {
